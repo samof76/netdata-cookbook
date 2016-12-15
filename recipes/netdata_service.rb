@@ -21,8 +21,15 @@ file '/etc/init.d/netdata' do
   mode '0755'
   owner 'root'
   group 'root'
+  notifies :enable, "service[netdata]"
+  notifies :start, "service[netdata]"
 end
 
 execute "start netdata service" do
   command "service netdata start"
+end
+
+service 'netdata' do
+  supports :status => :true, :restart => :true, :reload => :true
+  action :nothing
 end

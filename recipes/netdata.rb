@@ -5,12 +5,20 @@
 # Copyright 2016, Sambox LLP
 #
 # No rights reserved - Do Redistribute
-
-['zlib1g-dev', 'uuid-dev', 'libmnl-dev', 'gcc', 'make', 'git', 'curl', 'jq', 'nodejs', 'autoconf', 'autoconf-archive', 'autogen', 'automake', 'pkg-config'].each {
-  |item| package item do
-    action :install
-  end
-}
+case node['platform_family']
+when 'rhel', 'fedora'
+  ['autoconf', 'automake', 'curl', 'gcc', 'git', 'libmnl-devel', 'libuuid-devel', 'lm_sensors' 'make', 'zlib-devel', 'pkgconfig', 'nc', 'python', 'python-psycopg2', 'PyYAML'].each {
+    |item| package item do
+      action :install
+    end
+  }
+when 'ubuntu', 'debian'
+  ['zlib1g-dev', 'uuid-dev', 'libmnl-dev', 'gcc', 'make', 'git', 'curl', 'jq', 'nodejs', 'autoconf', 'autoconf-archive', 'autogen', 'automake', 'pkg-config'].each {
+    |item| package item do
+      action :install
+    end
+  }
+end
 
 git '/tmp/netdata' do
   repository 'https://github.com/firehol/netdata.git'
