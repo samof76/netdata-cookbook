@@ -12,7 +12,7 @@ The only requirement at the moment is an Ubuntu machine with Chef or Chef-Solo i
 
 ### Test On
 
-Ubuntu 14.04
+Ubuntu 14.04 and CentOS 7
 Chef-Solo 11.8.2
 
 ## Usage
@@ -32,7 +32,7 @@ Just include `netdata` in your node's `run_list`:
 
     MIT License
 
-    Copyright (c) [year] [fullname]
+    Copyright (c) 2016 Sambox LLP
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
