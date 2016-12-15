@@ -8,21 +8,12 @@
 
 
 
+
 execute "kill netdata" do
   command 'killall netdata'
 end
 
-execute "copy service file" do
-  command 'cp netdata-lsb /etc/init.d/netdata'
-  cwd '/tmp/netdata/system'
-end
-
-file '/etc/init.d/netdata' do
-  mode '0755'
-  owner 'root'
-  group 'root'
-end
-
-execute "start netdata service" do
-  command "service netdata start"
+service 'netdata' do
+  supports :status => :true, :restart => :true, :reload => :true
+  action [:enable, :start]
 end
