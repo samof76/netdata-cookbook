@@ -6,9 +6,6 @@
 #
 # No rights reserved - Do Redistribute
 
-
-
-
 execute "kill netdata" do
   command 'killall netdata'
   only_if "pgrep netdata"

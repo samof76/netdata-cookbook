@@ -2,10 +2,10 @@
 # Cookbook Name:: netdata
 # Recipe:: default
 #
-# Copyright 2016, YOUR_COMPANY_NAME
+# Copyright 2016, Sambox LLP
 #
-# All rights reserved - Do Not Redistribute
-#
+# No rights reserved - Do Redistribute
+
 case node['platform_family']
 when 'rhel', 'fedora'
   package 'epel-release' do
@@ -22,5 +22,5 @@ when 'ubuntu', 'debian'
   end
 end
 
-include_recipe "netdata::netdata"
-include_recipe "netdata::netdata_service"
+include_recipe "netdata::install"
+include_recipe "netdata::service"
