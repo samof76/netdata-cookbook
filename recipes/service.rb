@@ -11,6 +11,7 @@
 
 execute "kill netdata" do
   command 'killall netdata'
+  only_if "pgrep netdata"
 end
 
 service 'netdata' do
